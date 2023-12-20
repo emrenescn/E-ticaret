@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ETicaretAPI.Persistence.Migrations
 {
     [DbContext(typeof(ETicaretAPIDbContext))]
-    [Migration("20231212063607_mig_1")]
+    [Migration("20231220075905_mig_1")]
     partial class mig_1
     {
         /// <inheritdoc />
@@ -37,6 +37,9 @@ namespace ETicaretAPI.Persistence.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -66,6 +69,9 @@ namespace ETicaretAPI.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId1");
@@ -86,11 +92,14 @@ namespace ETicaretAPI.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<long>("Price")
-                        .HasColumnType("bigint");
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
 
                     b.Property<int>("Stock")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
